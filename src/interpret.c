@@ -1,5 +1,5 @@
 /* interpret.c
- * musc- scheme translator & interpreter
+ * - scheme translator & interpreter
  * author: denis.lepekhin@gmail.com
  * created on: 2009
  */
@@ -204,10 +204,6 @@ vmi_scp vmi_def_xy(svm_t vm, __arg descr x, __arg descr y)
 	res->bits = 0;
 	return res;
 }
-
-
-
-
 
 vmi_scp vmi_def_xr(svm_t vm, __arg descr x)
 {

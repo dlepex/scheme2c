@@ -1,5 +1,5 @@
 /* charcat.c
- * musc- scheme translator & interpreter
+ * - scheme translator & interpreter
  * author: denis.lepekhin@gmail.com
  * created on: 2009
  */
@@ -30,7 +30,6 @@ inline bool chrp_line_ending(bigchar ch)
 	return ch == CHR_LINEFEED || ch == CHR_NEXTLINE || ch == CHR_LINESEP;
 }
 
-
 inline bool chrp_u_line_ending(UChar *uc)
 {
 	return chrp_line_ending(uc[0]) ||
@@ -52,9 +51,6 @@ inline bool chrp_bracket(bigchar ch)
 {
 	return chrp_close_bracket(ch) || chrp_open_bracket(ch);
 }
-
-
-
 
 inline bool chrp_delim(bigchar ch)
 {	/*
@@ -87,7 +83,6 @@ inline bool chrp_letter(bigchar ch) {
 	return ( ch >= _CHR_('a') && ch <= _CHR_('z') ) ||
 	 ( ch >= _CHR_('A') && ch <= _CHR_('Z') );
 }
-
 
 inline bool chrp_constituent(bigchar ch)
 {

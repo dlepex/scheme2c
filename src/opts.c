@@ -1,5 +1,5 @@
 /* opts.c
- * musc- scheme translator & interpreter
+ * - scheme translator & interpreter
  * author: denis.lepekhin@gmail.com
  * created on: 2009
  */

@@ -2,7 +2,7 @@
 #|
 Benchmarks & tests
 |#
-;суммирование
+;summation
 (define (sum x)
   (letrec ([do (lambda (x sum) 
                  (cond ((= x 0) sum)
@@ -21,7 +21,7 @@ Benchmarks & tests
 (define append list-cat)
 
 (append 'a 'b `(5 ,nil ,@(list (fact 7) (fact 8)) 5))
-;обращение списка
+; list reverse
 (define (lrev L)
   (if (eq? (cdr L) nil)
       L
@@ -31,8 +31,7 @@ Benchmarks & tests
 (define (sqr x) (* x x))
 (define (f*2 f1 f2 x) (f1 (f2 x)))
 
-; генератор списка 
-; gen - генератор элемента
+; generates list
 (define (lgen gen)
   (letrec [(loop (lambda (l)
                    (let [(g (gen))]
@@ -67,10 +66,8 @@ Benchmarks & tests
           'end))))
 
 
-;вектор в список
 (define (vector->list vec) (lgen (genvec vec))) 
 
-; отображение списков
 (define (map fun _src)
   (letrec [(loop 
             (lambda (dest src)
@@ -79,11 +76,11 @@ Benchmarks & tests
                   (loop (cons (fun (car src)) dest) (cdr src)))))]
     (lrev (loop () _src))))
  
-; тест генерации списка списов от 1 до с
+; test list generation
 (define (test c)
   (map  (lambda (x) (lgen (genseq 1 x 1)))  (lgen (genseq 1 c 1)) ))
 
-;длительность выполнения fun
+; measure dur
 (define (dur fun)
   (let [(t (time))
         (v (fun))]

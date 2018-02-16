@@ -122,10 +122,10 @@ struct AppOption app_opts[] =
 };
 
 void app_print_help(struct AppOption *op) {
-	printf("musc - scheme interpreter & translator\n");
-	printf("Syntax: musc [<options>] <scm_files>, where: \n");
+	printf("scheme interpreter & translator\n");
+	printf("Syntax:  [<options>] <scm_files>, where: \n");
 	printf("<options> ::= [-'optSymbol' [<value>]* | --'optionFullname' [<value>]*]*\n");
-	printf("Example: musc -i /path/myfile1.scm /path/myfile2.scm\n");
+	printf("Example:  -i /path/myfile1.scm /path/myfile2.scm\n");
 	print_opt_help(op);
 }
 
@@ -382,12 +382,6 @@ void set_signals() {
 	signal(SIGFPE, sig_handler);
 }
 
-
-
-
-
-
-
 svm_t initialize_vm();
 void console_loop();
 void file_loop(svm_t vm);
@@ -401,14 +395,6 @@ int main(int argc, char **argv) {
 	excep_thread_init();
 	// init unit testing
 	unittest_init();
-
-/*
-	initscr(); cbreak();// noecho();
-	  nonl();
-	             intrflush(stdscr, FALSE);
-
-*/
-	//printf("TYPO %ul" , tag_get_typeix(134220513));
 
 	_try_
 		Sys_log = filelogger_make("sys", 0, "dbg.log");
@@ -514,7 +500,7 @@ void file_loop(svm_t vm)
 
 void console_loop(svm_t vm)
 {
-	printf("Mini Scheme REPL (read-eval-print-loop):\n");
+	printf("Scheme REPL (read-eval-print-loop):\n");
 
 	decl_gc_of_vm();
 	SAVE_RSTK();
@@ -523,8 +509,6 @@ void console_loop(svm_t vm)
 	__protect(descr, d, NIHIL);
 	__protect(descr, d1, NIHIL);
 	__protect(transformer_scp, tr, new_transformer(vm));
-
-
 
 	for(;;) {
 		printf("\n>> ");
@@ -589,9 +573,7 @@ svm_t initialize_vm() {
 				vmpar.perm_size, vmpar.stack_size);
 
 	return vm;
-
 }
-
 
 char * ultobis(unsigned long int ul, char *s)
 {
@@ -631,10 +613,6 @@ void *test_gc(void *__data)
 	UFILE *out = u_finit(stdout, 0, 0);
 	ss_hash_code(s);
 	printf( "++++%i %i %i++++", ss_hash_code(s), s->hash, descr_hash_code(desc_from_symindex(1)));
-
-
-
-
 
 	descr y1 = vm_symbol_asci(svm, "#!vec" ), y2, y3;
 //	string_scp ys = vm_symbol_str(svm, y1);
